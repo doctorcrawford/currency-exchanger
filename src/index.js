@@ -10,7 +10,7 @@ function getCurrencies() {
     .then(function (currencyResponse) {
       if (currencyResponse instanceof Error) {
         const errorMessage = `There was a problem accessing the currency data from ExchangeRate API:
-        ${currencyResponse.message}`;
+         ${currencyResponse}`;
         throw new Error(errorMessage);
       }
       const currencies = currencyResponse.conversion_rates;
@@ -38,8 +38,8 @@ function printCurrencies(currencies) {
 
 }
 
-function printError(error) {
-  console.log(error);
+function printError(error, errorResponse) {
+  console.log(error, errorResponse);
 }
 
 
