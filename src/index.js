@@ -15,18 +15,24 @@ function getCurrencies() {
       }
       const currencies = currencyResponse.conversion_rates;
       printCurrencies(currencies);
+      for (const currency in currencies) {
+        sessionStorage.setItem(currency, currencies[currency]);
+      }
     })
     .catch(function (error) {
       printError(error);
     });
 }
 
+function runExchange(inputAmt, exchangeRate) {
+  let exchangedAmt = inputAmt * exchangeRate;
+  return exchangedAmt;
+}
 
 
 // UI Logic
 
 function printCurrencies(currencies) {
-  console.log(currencies);
   const dropDown = document.getElementById("currencies");
   const currencyArray = Object.keys(currencies);
   currencyArray.forEach((currency) => {
@@ -35,14 +41,33 @@ function printCurrencies(currencies) {
     option.innerText = currency;
     dropDown.append(option);
   });
-
 }
 
-function printError(error, errorResponse) {
-  console.log(error, errorResponse);
+function printError(error) {
+  const exchangeDiv = document.getElementById("exchange-div");
+  exchangeDiv.innerText = error;
 }
+
+function printExchange(amt, currency) {
+  const result = document.getElementById("result");
+  const p = document.createElement("p");
+  p.innerText = `Dame figures you can get $${amt} ${currency}`;
+  result.append(p);
+}
+
+function handleFormSubmission(e) {
+  e.preventDefault();
+  const inputAmt = document.getElementById("input-amt").value;
+  const exchangeCurrency = document.getElementById(
+    "currencies").value;
+  const exchangeRate = parseFloat(sessionStorage[exchangeCurrency]);
+  const exchangeAmt = runExchange(inputAmt, exchangeRate);
+  printExchange(exchangeAmt, exchangeCurrency);
+}
+
 
 
 window.addEventListener("load", function () {
   getCurrencies();
+  this.document.getElementById("exchange-form").addEventListener("submit", handleFormSubmission);
 });

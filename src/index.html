@@ -5,15 +5,20 @@
 </head>
 <body>
   <h1>Dame Dolla's Digital Dinero Dishing Den</h1>
-  <div id="exchange-div">
 
+  <div id="exchange-div">
     <form id="exchange-form">
-      <label for="input-amt">Please enter the amount of USD you'd like to convert: $</label>
+      <label for="input-amt">Please enter the amount of USD you'd like Dame Dolla to convert for you: $</label>
       <input type="number" id="input-amt" min="0" value="0" step=".01">
-      <label for="currencies">Choose the currency you'd like to exchange to:</label>
+      <br><br>
+      <label for="currencies">Choose the currency you'd like Dame to exchange your money into:</label>
       <select name="currencies" id="currencies"></select>
+      <br>
+      <button type="submit">What's my exchange?</button>
     </form>
-    <button type="submit">What's my exchange?</button>
+    <br>
   </div>
+
+  <div id="result"></div>
 </body>
 </html>
