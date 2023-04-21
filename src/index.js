@@ -25,8 +25,17 @@ function getCurrencies() {
 
 // UI Logic
 
-function printCurrencies(response) {
-  console.log(response);
+function printCurrencies(currencies) {
+  console.log(currencies);
+  const dropDown = document.getElementById("currencies");
+  const currencyArray = Object.keys(currencies);
+  currencyArray.forEach((currency) => {
+    const option = document.createElement("option");
+    option.setAttribute("value", currency);
+    option.innerText = currency;
+    dropDown.append(option);
+  });
+
 }
 
 function printError(error) {
