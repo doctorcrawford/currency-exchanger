@@ -50,6 +50,7 @@ function printError(error) {
 
 function printExchange(amt, currency) {
   const result = document.getElementById("result");
+  result.innerHTML = null;
   const p = document.createElement("p");
   p.innerText = `Dame figures you can get $${amt} ${currency}`;
   result.append(p);

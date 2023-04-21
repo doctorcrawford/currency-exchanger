@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Currency Exchanger</title>
 </head>
+
 <body>
-  <h1>Dame Dolla's Digital Dinero Dishing Den</h1>
+  <div class="container">
+    <h1>Dame Dolla's Digital Dinero Dishing Den</h1>
+    <div id="content">
+      <div id="exchange-div">
+        <form id="exchange-form">
+          <label for="input-amt">Please enter the amount of USD you'd like Dame Dolla to convert for you: $</label>
+          <input type="number" id="input-amt" min="0" value="0" step=".01">
+          <br><br>
+          <label for="currencies">Choose the currency you'd like Dame to exchange your money into:</label>
+          <select name="currencies" id="currencies"></select>
+          <br>
+          <button type="submit" class="btn btn-primary">What's my exchange?</button>
+        </form>
+        <br>
+      </div>
 
-  <div id="exchange-div">
-    <form id="exchange-form">
-      <label for="input-amt">Please enter the amount of USD you'd like Dame Dolla to convert for you: $</label>
-      <input type="number" id="input-amt" min="0" value="0" step=".01">
-      <br><br>
-      <label for="currencies">Choose the currency you'd like Dame to exchange your money into:</label>
-      <select name="currencies" id="currencies"></select>
-      <br>
-      <button type="submit">What's my exchange?</button>
-    </form>
-    <br>
+      <div id="result"></div>
+    </div>
   </div>
-
-  <div id="result"></div>
 </body>
+
 </html>
